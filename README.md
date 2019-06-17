@@ -1,6 +1,5 @@
 # CMake C++ Google Test Project template
 
-/cppGoogleTestDLProject
 [![GitHub last commit](https://img.shields.io/github/last-commit/genedelisa/cppGoogleTestDLProject.svg)](https://github.com/genedelisa/cppGoogleTestDLProject/commits/master)
 
 [![GitHub release](https://img.shields.io/github/release/genedelisa/cppGoogleTestDLProject.svg)](https://github.com/genedelisa/cppGoogleTestDLProject/releases/)
@@ -16,25 +15,27 @@
 
 ## What's this?
 
-This is a CMake 3 configured C++ project.
+This is a [CMake 3](https://cmake.org) configured C++ project.
+
+There is one C++ class and it is shoved into a static library.
 
 * src contains the source. Surprise!
 * include contains the headers.
 * test contains the Google test.
 
-There is one C++ class and it is shoved into a static library.
-
-An executable and a test runner is built in build/bin.
+An executable and a test runner are built in build/bin.
 
 Google Test/Mock are downloaded if an option is set.
 
 Doxygen is run to generate documentation if an option is set.
 
-The normal build incantation is this:
+There are Visual Studio Code tasks defined.
 
-``` shell
-cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all
-```
+There is a script to generate an Xcode project.
+
+## Building
+
+You run cmake from the build directory.
 
 You might want to clean the build directory first.
 
@@ -42,11 +43,13 @@ You might want to clean the build directory first.
 rm -rf build/*
 ```
 
-There are Visual Studio Code tasks defined.
+The normal build incantation is this:
 
-There is a script to generate an Xcode project.
+``` shell
+cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all
+```
 
-## Visutal Studio Tasks defined
+## Visual Studio Tasks defined
 
 ### make all
 
