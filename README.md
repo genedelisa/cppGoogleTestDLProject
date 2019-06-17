@@ -27,7 +27,7 @@ An executable and a test runner are built in build/bin.
 
 Google Test/Mock are downloaded if an option is set.
 
-Doxygen is run to generate documentation if an option is set.
+[Doxygen](http://www.doxygen.nl) is run to generate documentation if an option is set. You need to download and install it first. I suggest you run the app to reconfigure doc/Doxyfile.in
 
 There are Visual Studio Code tasks defined.
 
