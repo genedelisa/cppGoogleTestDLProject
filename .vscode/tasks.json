@@ -1,0 +1,34 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+		{
+			"label": "make all",
+			"type": "shell",
+			"command": "cd build && make all",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "make doc",
+			"type": "shell",
+			"command": "cd build && make doc",
+			"problemMatcher": []
+		},
+		{
+			"label": "cmake",
+			"type": "shell",
+			"command": "rm -rf build && cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all",
+			"problemMatcher": []
+		},
+		{
+			"label": "cmake just docs",
+			"type": "shell",
+			"command": "rm -rf build && cd build && cmake -D USE_UNIT_TESTING=OFF -D GENERATE_DOC=ON .. && make doc",
+			"problemMatcher": []
+		}
+	]
+}
