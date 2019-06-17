@@ -1,10 +1,10 @@
-# Gene's C++ frobs
+# CMake C++ Google Test Project template
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/genedelisa/vscode-cppprojects.svg)](https://github.com/genedelisa/vscode-cppprojects/commits/master)
+/cppGoogleTestDLProject
+[![GitHub last commit](https://img.shields.io/github/last-commit/genedelisa/cppGoogleTestDLProject.svg)](https://github.com/genedelisa/cppGoogleTestDLProject/commits/master)
 
-[![GitHub release](https://img.shields.io/github/release/genedelisa/vscode-cppprojects.svg)](https://github.com/genedelisa/vscode-cppprojects/releases/)
-[![GitHub release date](https://img.shields.io/github/release-date/genedelisa/vscode-cppprojects.svg)](https://github.com/genedelisa/vscode-cppprojects/releases)
-
+[![GitHub release](https://img.shields.io/github/release/genedelisa/cppGoogleTestDLProject.svg)](https://github.com/genedelisa/cppGoogleTestDLProject/releases/)
+[![GitHub release date](https://img.shields.io/github/release-date/genedelisa/cppGoogleTestDLProject.svg)](https://github.com/genedelisa/cppGoogleTestDLProject/releases)
 
 [![C++17](https://img.shields.io/badge/c++17-compatible-4BC51D.svg?style=flat")](https://www.iso.org/standard/68564.html)
 [![Platforms macOS](https://img.shields.io/badge/Platforms-OS%20X-lightgray.svg?style=flat)](https://swift.org/)
@@ -16,50 +16,79 @@
 
 ## What's this?
 
-Running NodeJS/{Java,Type}Script in vscode? Easy. 
-C++? Not so much.
+This is a CMake 3 configured C++ project.
 
-This is a Visual Studio Code multi-root workspace containing separate small C++ projects. helloworld and helloworld2 have the same contents. I wanted to see if the tasks would work for each project. Yes! The task picker will tell you which project your are currently in.
+* src contains the source. Surprise!
+* include contains the headers.
+* test contains the Google test.
 
+There is one C++ class and it is shoved into a static library.
 
-You **should** be able to simply copy the helloworld project, add the copy to the workspace, then replace the code with your own.
+An executable and a test runner is built in build/bin.
 
-The executable generated will be named the same as your project name.
+Google Test/Mock are downloaded if an option is set.
 
-You can build via cmake/make, or use the active file task if you're compiling just one file.
+Doxygen is run to generate documentation if an option is set.
 
-I'm not a visual studio code expert. But out of the box, developing C++ is a bit of a pain.
-If you know an easier way, let me know!
+The normal build incantation is this:
 
-## Tasks defined
+``` shell
+cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all
+```
 
-### cmake and make
-Runs cmake to create the Makefile in build, then it runs make to build the executable.
+You might want to clean the build directory first.
 
-### make
+```shell
+rm -rf build/*
+```
+
+There are Visual Studio Code tasks defined.
+
+There is a script to generate an Xcode project.
+
+## Visutal Studio Tasks defined
+
+### make all
+
+Runs make all in the build directory
+
+### make doc
+
+Runs make doc in the build directory
+
+```shell
+cd build && make doc
+```
+
+### cmake
+
 You probably want to run cmake once. Then when your code is updated, run make.
 
-### clang++ C++17 build active file
-If you are editing a C++ file and you want to compile it, choose this task.
+This task cleans the build directory, goes into it, runs cmake, then runs make all.
 
-If you are editing a non C++ file and run this, hilarity will ensue.
+```shell
+rm -rf build/* && cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all
+```
 
-### clean
-Removes the contents of the build directory.
+### cmake just docs
 
+Skips downloading Google Test and building the C++ code. Instead it does just the Doxygen guff.
 
-## Blog post for this example.
+```shell
+rm -rf build/* && cd build && cmake -D USE_UNIT_TESTING=OFF -D GENERATE_DOC=ON .. && make doc
+```
+
+## Blog post for this example
 
 [Blog post coming coon](http://www.rockhoppertech.com/blog/)
 
-
 ### Buy my kitty Giacomo some cat food
+
 If you find this useful, my kitty likes snacks.
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=F5KE9Z29MH8YQ&bnP-DonationsBF:btn_donate_SM.gif:NonHosted)
 
 <img src="http://www.rockhoppertech.com/blog/wp-content/uploads/2016/07/momocoding-1024.png" alt="Giacomo Kitty" width="400" height="300">
-
 
 ## Licensing
 
@@ -69,6 +98,6 @@ Please read the [LICENSE](LICENSE) for details.
 
 ## Credits
 
-*	[Gene De Lisa's development blog](http://rockhoppertech.com/blog/)
-*	[Gene De Lisa's music blog](http://genedelisa.com/)
-*   Twitter: [@GeneDeLisaDev](http://twitter.com/genedelisadev)
+* [Gene De Lisa's development blog](http://rockhoppertech.com/blog/)
+* [Gene De Lisa's music blog](http://genedelisa.com/)
+* Twitter: [@GeneDeLisaDev](http://twitter.com/genedelisadev)

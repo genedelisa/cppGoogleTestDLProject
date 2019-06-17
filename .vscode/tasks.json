@@ -21,13 +21,13 @@
 		{
 			"label": "cmake",
 			"type": "shell",
-			"command": "rm -rf build && cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all",
+			"command": "rm -rf build/* && cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all",
 			"problemMatcher": []
 		},
 		{
 			"label": "cmake just docs",
 			"type": "shell",
-			"command": "rm -rf build && cd build && cmake -D USE_UNIT_TESTING=OFF -D GENERATE_DOC=ON .. && make doc",
+			"command": "rm -rf build/* && cd build && cmake -D USE_UNIT_TESTING=OFF -D GENERATE_DOC=ON .. && make doc",
 			"problemMatcher": []
 		}
 	]
