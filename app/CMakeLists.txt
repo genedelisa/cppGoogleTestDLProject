@@ -1,27 +1,33 @@
-# set minimum cmake version
 cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
-# create a static library and an executable with a main that uses it
-
-message("cmake source in ${CMAKE_CURRENT_SOURCE_DIR}")
 set(Source
-    Account.cpp
-    ../include/Account.hpp
+    theApp.cpp
 )
 
 #####################################################################
-# create a static library
-set(TheLibraryName accountLib)
-add_library(${TheLibraryName} STATIC ${Source})
+# create the executable
+add_executable(theApp
+    ${Source}
+)
 
-# target_compile_features(${TheLibraryName} PUBLIC "cxx_std_17")
+# link the library to the executable
+# https://cmake.org/cmake/help/latest/command/target_link_libraries.html
+target_link_libraries(theApp
+    PRIVATE accountLib
+)
 
-# https://cmake.org/cmake/help/latest/command/target_include_directories.html
-target_include_directories(${TheLibraryName} PUBLIC
-# this doesnt work	${CMAKE_CURRENT_SOURCE_DIR}../include
-	"../include"
-	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}../include>
-	$<INSTALL_INTERFACE:../include>
+# how to set properties. This has actually already been set.
+set_target_properties(theApp PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)
+
+# how to debug properties and other things.
+include(CMakePrintHelpers)
+cmake_print_properties(
+    TARGETS 
+        theApp
+    PROPERTIES 
+        RUNTIME_OUTPUT_DIRECTORY 
 )
 
 

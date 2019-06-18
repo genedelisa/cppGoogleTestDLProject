@@ -82,6 +82,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 #
 # each of these dirs have a CMakeLists.txt
 add_subdirectory(src)
+add_subdirectory(app)
 include_directories(include)
 
 #####################################################################
