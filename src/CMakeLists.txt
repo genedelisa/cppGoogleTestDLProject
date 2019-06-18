@@ -13,8 +13,8 @@ set(Source
 # create a static library
 set(TheLibraryName accountLib)
 add_library(${TheLibraryName} STATIC ${Source})
-# already set this above, but I'm paranoid
-target_compile_features(${TheLibraryName} PUBLIC "cxx_std_17")
+
+# target_compile_features(${TheLibraryName} PUBLIC "cxx_std_17")
 
 # https://cmake.org/cmake/help/latest/command/target_include_directories.html
 target_include_directories(${TheLibraryName} PUBLIC
@@ -23,6 +23,7 @@ target_include_directories(${TheLibraryName} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}../include>
 	$<INSTALL_INTERFACE:../include>
 )
+
 
 #####################################################################
 # create the executable
@@ -40,6 +41,13 @@ set_target_properties(${theProgramName} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
+include(CMakePrintHelpers)
+cmake_print_properties(
+    TARGETS 
+        account
+    PROPERTIES 
+        RUNTIME_OUTPUT_DIRECTORY 
+)
 
 
 

@@ -10,12 +10,25 @@
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			}
+			},
+			"problemMatcher": []
 		},
 		{
+			"label": "make test",
+			"type": "shell",
+			"command": "cd build && make test",
+			"problemMatcher": []
+        },
+        {
 			"label": "make doc",
 			"type": "shell",
 			"command": "cd build && make doc",
+			"problemMatcher": []
+        },
+        {
+			"label": "clean build",
+			"type": "process",
+			"command": "rm -rf build/*",
 			"problemMatcher": []
 		},
 		{

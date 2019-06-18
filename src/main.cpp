@@ -23,12 +23,9 @@ int main() {
 	std::cout << "balance after withdraw: " << account->getBalance() << std::endl;
 
 	std::stringstream ss;
-	std::locale::global(std::locale(""));
-	// Sets the local configuration
-	ss.imbue(std::locale(""));
-
-	ss << std::showbase << std::put_money(account->getBalance());
-
-	std::cout << std::locale().name() << ": " << ss.str() << '\n';
+	ss.imbue(std::locale("en_US"));
+    // smallest non-fractional units of the currency: cents in the U.S,
+	ss << std::showbase << std::put_money(account->getBalance() * 100.0 );
+	std::cout << std::locale("en_US").name() << ": " << ss.str() << std::endl;
 	return EXIT_SUCCESS;
 }

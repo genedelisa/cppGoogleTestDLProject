@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "Gene's Google Test Frobs"
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = /Users/gene/Development/C++/mydownloadgtestintoproject/doc/dude.gif
+PROJECT_LOGO           = /Users/gene/Development/C++/gene/cppGoogleTestDLProject/doc/dude.gif
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -670,7 +670,8 @@ GENERATE_DEPRECATEDLIST= YES
 # sections, marked by \if <section_label> ... \endif and \cond <section_label>
 # ... \endcond blocks.
 
-ENABLED_SECTIONS       = LICENSE, DESCRIPTION
+ENABLED_SECTIONS       = LICENSE, \
+                         DESCRIPTION
 
 # The MAX_INITIALIZER_LINES tag determines the maximum number of lines that the
 # initial value of a variable or macro / define can have for it to appear in the
@@ -813,11 +814,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = /Users/gene/Development/C++/mydownloadgtestintoproject/
-
-#../../src ../../test
-#/Users/gene/Development/C++/mydownloadgtestintoproject/src \
-                        # /Users/gene/Development/C++/mydownloadgtestintoproject/test
+INPUT                  = /Users/gene/Development/C++/gene/cppGoogleTestDLProject
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -901,7 +898,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = /Users/gene/Development/C++/mydownloadgtestintoproject/build
+EXCLUDE                = /Users/gene/Development/C++/gene/cppGoogleTestDLProject/build \
+                         /Users/gene/Development/C++/gene/cppGoogleTestDLProject/buildMacOS
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
