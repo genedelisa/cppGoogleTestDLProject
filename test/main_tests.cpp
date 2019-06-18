@@ -15,14 +15,14 @@ using namespace gend;
  *
  */
 struct AccountTest : testing::Test {
- protected:
-  Account *account;
-  AccountTest() { account = new Account; }
-  virtual ~AccountTest() { delete account; }
+  protected:
+    Account* account;
+    AccountTest() { account = new Account; }
+    virtual ~AccountTest() { delete account; }
 
-  // could do this in the ctor, but just showing that this is here
-  void SetUp() override { account->deposit(100); }
-  void TearDown() override {}
+    // could do this in the ctor, but just showing that this is here
+    void SetUp() override { account->deposit(100); }
+    void TearDown() override {}
 };
 
 // the tests
@@ -30,10 +30,10 @@ struct AccountTest : testing::Test {
 // https://github.com/google/googletest/blob/master/googletest/docs/primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests
 // tl;dr use TEST_F if you're using a fixture. F for fixture. clever.
 TEST_F(AccountTest, CanDepositMoney) {
-  account->deposit(100);
-  EXPECT_EQ(200, account->getBalance());
+    account->deposit(100);
+    EXPECT_EQ(200, account->getBalance());
 }
 TEST_F(AccountTest, CanWithdrawMoney) {
-  account->withdraw(50);
-  EXPECT_EQ(50, account->getBalance());
+    account->withdraw(50);
+    EXPECT_EQ(50, account->getBalance());
 }

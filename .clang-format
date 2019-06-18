@@ -12,8 +12,9 @@ ContinuationIndentWidth: '4'
 NamespaceIndentation: All
 Standard: Cpp11
 UseTab: Never
+SpaceBeforeInheritanceColon: false
 ---
 
-
-# this helps
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# this helps too
 # https://zed0.co.uk/clang-format-configurator/

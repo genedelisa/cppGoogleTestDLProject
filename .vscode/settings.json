@@ -2,5 +2,13 @@
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
     "files.associations": {
         "iomanip": "cpp"
-    }
+    },
+
+    "catch2TestExplorer.executables": [
+        {
+            "name": "${filename}",
+            "description": "${relDirpath}/",
+            "pattern": "build/bin/*test*"
+        }
+    ]
 }
