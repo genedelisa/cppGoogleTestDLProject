@@ -19,11 +19,12 @@ This is a [CMake 3](https://cmake.org) configured C++ project.
 
 There is one C++ class and it is shoved into a static library.
 
-* src contains the source. Surprise!
+* src contains the source for the library. Surprise!
 * include contains the headers.
 * test contains the Google test.
+* app contains a command line app that uses the library.
 
-An executable and a test runner are built in build/bin.
+The executable and a test runner are built in build/bin.
 
 Google Test/Mock are downloaded if an option is set.
 
@@ -71,6 +72,14 @@ This task cleans the build directory, goes into it, runs cmake, then runs make a
 
 ```shell
 rm -rf build/* && cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all
+```
+
+### clean build
+
+Removes everything from the build directory.
+
+```shell
+rm -rf build/*
 ```
 
 ### cmake just docs
