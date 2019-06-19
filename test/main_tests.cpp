@@ -14,7 +14,7 @@ using namespace gend;
  * @brief a test fixture for the account class
  *
  */
-struct AccountTest : testing::Test {
+struct AccountTest: testing::Test {
   protected:
     Account* account;
     AccountTest() { account = new Account; }

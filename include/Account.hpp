@@ -17,7 +17,6 @@
 * @todo the sections above look far to big in the output.
 */
 
-
 #pragma once
 
 /**
@@ -26,10 +25,10 @@
  * Right now it contains just the **Account** class.
  *
  * @author Gene
-*/
+ */
 namespace gend {
 
-	//http://www.doxygen.nl/manual/faq.html#faq_code_inc
+    // http://www.doxygen.nl/manual/faq.html#faq_code_inc
 
     /** @class Account Account.hpp "Account.hpp"
      *
@@ -38,31 +37,31 @@ namespace gend {
      *
      * A non-real world Account that maintains a balance.
      * Nothing exciting.
-		 *
+     *
      * ## Usage:
-		 *
+     *
      *  @code
      *  Account a;
-		 *  a.deposit(100.0);
-		 *  a.withdraw(10.0);
-		 *  std::cout << a.getBalance() << std::endl;
+     *  a.deposit(100.0);
+     *  a.withdraw(10.0);
+     *  std::cout << a.getBalance() << std::endl;
      *  @endcode
      *
      * @note Figuring this doxygen guff out.
      */
     class Account {
       public:
-			/**
-			 * @brief The nondefault default ctor.
-			 *
-			 */
+        /**
+         * @brief The nondefault default ctor.
+         *
+         */
         Account();
-				/**
-				 * @brief the destructor.
-				 *
-				 * Not really needed since there are no pointers
-				 *
-				 */
+        /**
+         * @brief the destructor.
+         *
+         * Not really needed since there are no pointers
+         *
+         */
         virtual ~Account();
 
         /**
@@ -74,7 +73,7 @@ namespace gend {
          * ## Typical usage:
          *
          * @code
-				 * Account* account = new Account();
+         * Account* account = new Account();
          * account->deposit(100.0);
          * @endcode
          *
@@ -85,21 +84,22 @@ namespace gend {
          */
         void deposit(double amount);
 
-				/**
-				 * @brief remove the amount from the balance.
-				 *
-				 */
+        /**
+         * @brief remove the amount from the balance.
+         *
+         */
         void withdraw(double amount);
 
-				/**
-				 * @brief get the current balance.
-				 * @returns a double representing the balance
-				 */
+        /**
+         * @brief get the current balance.
+         * @returns a double representing the balance
+         */
         double getBalance();
 
       private:
-				// Superman III FTW!
-        double balance;
+        // Superman III FTW!
+        // really, double is not good for finance.
+        double balance{0.0};
     };
 
 } // namespace gend
