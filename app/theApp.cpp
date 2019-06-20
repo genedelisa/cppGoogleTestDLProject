@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <iostream>
 #include <locale>
+#include <memory> // We need to include this for shared_ptr
 #include <sstream>
 
 #include <Account.hpp>
@@ -14,9 +15,15 @@
 using namespace gend;
 
 int main() {
+    std::wstring s;
+
     std::cout << std::setprecision(2) << std::fixed;
 
-    Account* account = new Account();
+    //auto myAccount {std::make_shared<Account>()};
+    //auto herAccount = myAccount;
+
+    auto account {std::make_unique<Account>()};
+
     account->deposit(100);
     std::cout << "balance after deposit: " << account->getBalance()
               << std::endl;
@@ -30,5 +37,6 @@ int main() {
     // an actual dollar class would use pennies as in integer for the balance
     ss << std::showbase << std::put_money(account->getBalance() * 100.0);
     std::cout << std::locale("en_US").name() << ": " << ss.str() << std::endl;
+
     return EXIT_SUCCESS;
 }

@@ -94,11 +94,12 @@ namespace gend {
          * @brief get the current balance.
          * @returns a double representing the balance
          */
-        double getBalance();
+        double getBalance() const;
 
       private:
         // Superman III FTW!
         // really, double is not good for finance.
+        // Use a currency class. Or use int based on pennies.
         double balance{0.0};
     };
 

@@ -20,6 +20,12 @@
 			"problemMatcher": []
         },
         {
+			"label": "make clean",
+			"type": "shell",
+			"command": "cd build && make clean",
+			"problemMatcher": []
+        },
+        {
 			"label": "make doc",
 			"type": "shell",
 			"command": "cd build && make doc",
