@@ -10,6 +10,18 @@ add_executable(theApp
     ${Source}
 )
 
+target_compile_features(theApp
+	PRIVATE
+		cxx_std_17
+)
+
+target_compile_options(theApp
+	PRIVATE
+		$<$<CXX_COMPILER_ID:MSVC>:/W3>
+    	$<$<CXX_COMPILER_ID:Clang>:-Wall>
+    	$<$<CXX_COMPILER_ID:GNU>:-Wall>
+)
+
 # link the library to the executable
 # https://cmake.org/cmake/help/latest/command/target_link_libraries.html
 target_link_libraries(theApp

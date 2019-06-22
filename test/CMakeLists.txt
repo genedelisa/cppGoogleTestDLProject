@@ -24,6 +24,17 @@ target_include_directories(${TheTestTarget}
 
 )
 
+target_compile_features(${TheTestTarget}
+	PRIVATE
+		cxx_std_17
+)
+
+target_compile_options(${TheTestTarget}
+	PRIVATE
+		$<$<CXX_COMPILER_ID:MSVC>:/W3>
+    	$<$<CXX_COMPILER_ID:Clang>:-Wall>
+    	$<$<CXX_COMPILER_ID:GNU>:-Wall>
+)
 
 # Prevent overriding the parent project's compiler/linker
 # settings on Windows

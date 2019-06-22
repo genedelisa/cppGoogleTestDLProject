@@ -14,7 +14,7 @@ set(Source
 set(TheLibraryName accountLib)
 add_library(${TheLibraryName} STATIC ${Source})
 
-# target_compile_features(${TheLibraryName} PUBLIC "cxx_std_17")
+
 
 # https://cmake.org/cmake/help/latest/command/target_include_directories.html
 target_include_directories(${TheLibraryName} PUBLIC
@@ -24,6 +24,18 @@ target_include_directories(${TheLibraryName} PUBLIC
 	$<INSTALL_INTERFACE:../include>
 )
 
+
+target_compile_features(${TheLibraryName}
+	PRIVATE
+		cxx_std_17
+)
+
+target_compile_options(${TheLibraryName}
+	PRIVATE
+		$<$<CXX_COMPILER_ID:MSVC>:/W3>
+    	$<$<CXX_COMPILER_ID:Clang>:-Wall>
+    	$<$<CXX_COMPILER_ID:GNU>:-Wall>
+)
 
 
 

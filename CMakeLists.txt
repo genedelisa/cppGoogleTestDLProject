@@ -10,16 +10,6 @@ project(cppGoogleTestDLProject
 
 message("top level cmake ${PROJECT_SOURCE_DIR}")
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# On some platforms, this results in linking to a different library (e.g. -std=c++11 rather than -std=gnu++11).
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-if(MSVC)
-   add_compile_options(/W3 /WX)
-else()
-   add_compile_options(-W -Wall -Werror)
-endif()
 
 #####################################################################
 # Options
