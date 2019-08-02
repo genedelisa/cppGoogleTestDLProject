@@ -4,9 +4,11 @@
  *  Licensed under the MIT License.
  *  See LICENSE in the project for license information.
  *--------------------------------------------------------------------------------------------*/
+#include <gend/Account.hpp>
 
-#include "Account.hpp"
-#include "gtest/gtest.h"
+//#include "Account.hpp"
+//#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 using namespace gend;
 
@@ -16,6 +18,7 @@ using namespace gend;
  */
 struct AccountTest: testing::Test {
   protected:
+    // old skool pointers
     Account* account;
     AccountTest() { account = new Account; }
     virtual ~AccountTest() { delete account; }

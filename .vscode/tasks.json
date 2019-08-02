@@ -2,6 +2,14 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
+    "presentation": {
+		"clear": true,
+		"echo": false,
+		"reveal": "always",
+		"focus": true,
+		"panel": "shared",
+		"showReuseMessage": false
+	},
     "tasks": [
 		{
 			"label": "make all",
@@ -10,14 +18,27 @@
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			},
-			"problemMatcher": []
+            },
+            "problemMatcher": {
+				"owner": "cpp",
+				"base": "$gcc",
+				"fileLocation": [
+				  	"absolute"
+  				]
+			}
+			
 		},
 		{
 			"label": "make test",
 			"type": "shell",
 			"command": "cd build && make test",
-			"problemMatcher": []
+            "problemMatcher": {
+				"owner": "cpp",
+				"base": "$gcc",
+				"fileLocation": [
+				  	"absolute"
+  				]
+			}
         },
         {
 			"label": "make doc",
@@ -32,10 +53,28 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "cmake",
+			"label": "cmake just lib",
 			"type": "shell",
-			"command": "rm -rf build/* && cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all",
-			"problemMatcher": []
+			"command": "rm -rf build/* && cd build && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -D USE_UNIT_TESTING=OFF -D GENERATE_DOC=OFF .. && make all",
+			"problemMatcher": {
+				"owner": "cpp",
+				"base": "$gcc",
+				"fileLocation": [
+				  	"absolute"
+  				]
+			}
+        },
+        {
+			"label": "cmake all",
+			"type": "shell",
+			"command": "rm -rf build/* && cd build && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make all",
+			"problemMatcher": {
+				"owner": "cpp",
+				"base": "$gcc",
+				"fileLocation": [
+				  	"absolute"
+  				]
+			}
 		},
 		{
 			"label": "cmake just docs",

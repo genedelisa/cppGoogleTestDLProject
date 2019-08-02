@@ -9,9 +9,22 @@
 #include <locale>
 #include <sstream>
 
-#include <Account.hpp>
+#include <gend/Account.hpp>
 
 using namespace gend;
+
+void orYouCouldDoThis() {
+    using std::cout;
+    using std::endl;
+
+    Account account;
+
+    account.deposit(100);
+    cout << "balance after deposit: " << account.getBalance() << "\n";
+
+    account.withdraw(50);
+    cout << "balance after withdraw: " << account.getBalance() << endl;
+}
 
 int main() {
     std::cout << std::setprecision(2) << std::fixed;
@@ -30,5 +43,9 @@ int main() {
     // an actual dollar class would use pennies as in integer for the balance
     ss << std::showbase << std::put_money(account->getBalance() * 100.0);
     std::cout << std::locale("en_US").name() << ": " << ss.str() << std::endl;
+    
+    orYouCouldDoThis();
+    
     return EXIT_SUCCESS;
 }
+

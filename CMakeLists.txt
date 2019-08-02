@@ -10,16 +10,10 @@ project(cppGoogleTestDLProject
 
 message("top level cmake ${PROJECT_SOURCE_DIR}")
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# On some platforms, this results in linking to a different library (e.g. -std=c++11 rather than -std=gnu++11).
-set(CMAKE_CXX_EXTENSIONS OFF)
+# for debugging cmake files
+include(CMakePrintHelpers)
+# https://cmake.org/cmake/help/latest/module/CMakePrintHelpers.html
 
-if(MSVC)
-   add_compile_options(/W3 /WX)
-else()
-   add_compile_options(-W -Wall -Werror)
-endif()
 
 #####################################################################
 # Options
@@ -27,7 +21,7 @@ endif()
 
 # e.g. cmake -D USE_UNIT_TESTING=ON ..
 option(USE_UNIT_TESTING "Build the tests" OFF)
-option(GENERATE_DOC "Run Doxygen to generate docs" ON)
+option(GENERATE_DOC "Run Doxygen to generate docs" OFF)
 # possible incantation:
 # cd build && cmake -D USE_UNIT_TESTING=ON -D GENERATE_DOC=ON .. && make
 #####################################################################
@@ -83,7 +77,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # each of these dirs have a CMakeLists.txt
 add_subdirectory(src)
 add_subdirectory(app)
-include_directories(include)
+#include_directories(include)
 
 #####################################################################
 if(USE_UNIT_TESTING)

@@ -10,40 +10,46 @@ add_executable(theApp
     ${Source}
 )
 
-# link the library to the executable
-# https://cmake.org/cmake/help/latest/command/target_link_libraries.html
-target_link_libraries(theApp
-    PRIVATE accountLib
+target_compile_features(theApp
+	PRIVATE
+		cxx_std_17
 )
 
-# how to set properties. This has actually already been set.
+# link the library to the executable using the alias
+# https://cmake.org/cmake/help/latest/command/target_link_libraries.html
+target_link_libraries(theApp
+	PUBLIC
+        # this is the alias
+        GEND::accountLib
+		#${Boost_LIBRARIES}
+)
+
+
+# https://cmake.org/cmake/help/latest/command/target_include_directories.html
+target_include_directories(theApp 
+    PUBLIC
+        $<INSTALL_INTERFACE:include/gend>
+        $<BUILD_INTERFACE:${GEND_INCLUDE_BUILD_DIR}>
+
+    PRIVATE
+        #${CMAKE_CURRENT_SOURCE_DIR}/include/
+)
+
+
+# https://cmake.org/cmake/help/latest/command/target_link_options.html
+target_link_options(theApp
+    PUBLIC
+    "$<$<CONFIG:DEBUG>:${-v}>"
+    #    -DBOOST_LOG_DYN_LINK
+)
+
 set_target_properties(theApp PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
-# how to debug properties and other things.
-include(CMakePrintHelpers)
 cmake_print_properties(
     TARGETS 
         theApp
     PROPERTIES 
         RUNTIME_OUTPUT_DIRECTORY 
 )
-
-
-
-
-
-
-
-
-
-#add_library(record STATIC src/include/record.cpp)
-#target_include_directories(record PUBLIC src/include/record)  # When cmakeDemo links to this, it'll get these includes
-#target_include_directories(record PRIVATE src/include/record/lib)   # When cmakeDemo links to this, it won't get these includes
-
-
-#target_include_directories(${TheLibraryName} PUBLIC
-#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/${TheLibraryName}>
-#  $<INSTALL_INTERFACE:include/${TheLibraryName}>  # <prefix>/include/${TheLibraryName}
-#)

@@ -9,9 +9,9 @@
  *
  */
 
-//#include <Account.hpp>
+#include <gend/Account.hpp>
 
-#include "Account.hpp"
+//#include "Account.hpp"
 
 namespace gend {
     Account::Account() : balance(0) {}
