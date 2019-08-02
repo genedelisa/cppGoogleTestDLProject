@@ -22,6 +22,6 @@ namespace gend {
 
     void Account::withdraw(double amount) { balance -= amount; }
 
-    double Account::getBalance() { return balance; }
+    double Account::getBalance() const { return balance; }
 
 } // namespace gend

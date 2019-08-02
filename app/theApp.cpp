@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <iostream>
 #include <locale>
+#include <memory> // We need to include this for shared_ptr
 #include <sstream>
 
 #include <gend/Account.hpp>
@@ -27,9 +28,15 @@ void orYouCouldDoThis() {
 }
 
 int main() {
+    std::wstring s;
+
     std::cout << std::setprecision(2) << std::fixed;
 
-    Account* account = new Account();
+    //auto myAccount {std::make_shared<Account>()};
+    //auto herAccount = myAccount;
+
+    auto account {std::make_unique<Account>()};
+
     account->deposit(100);
     std::cout << "balance after deposit: " << account->getBalance()
               << std::endl;

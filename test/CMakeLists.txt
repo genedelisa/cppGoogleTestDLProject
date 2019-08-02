@@ -30,6 +30,17 @@ target_link_libraries(${TheTestTarget}
 		#${Boost_LIBRARIES}
 )
 
+target_compile_features(${TheTestTarget}
+	PRIVATE
+		cxx_std_17
+)
+
+target_compile_options(${TheTestTarget}
+	PRIVATE
+		$<$<CXX_COMPILER_ID:MSVC>:/W3>
+    	$<$<CXX_COMPILER_ID:Clang>:-Wall>
+    	$<$<CXX_COMPILER_ID:GNU>:-Wall>
+)
 
 # https://cmake.org/cmake/help/latest/command/target_include_directories.html
 target_include_directories(${TheTestTarget} 

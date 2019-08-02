@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "memory": "cpp",
+        "iosfwd": "cpp"
     },
 
     "catch2TestExplorer.executables": [

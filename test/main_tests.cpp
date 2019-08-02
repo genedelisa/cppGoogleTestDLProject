@@ -13,15 +13,19 @@
 using namespace gend;
 
 /**
- * @brief a test fixture for the account class
+ * @brief a test fixture for the Account class
  *
  */
 struct AccountTest: testing::Test {
   protected:
-    // old skool pointers
-    Account* account;
-    AccountTest() { account = new Account; }
-    virtual ~AccountTest() { delete account; }
+    std::unique_ptr<Account> account;
+
+    AccountTest() { account = std::make_unique<Account>(); }    
+
+    // old skool
+    //Account* account;
+    //AccountTest() { account = new Account; }
+    //virtual ~AccountTest() { delete account; }
 
     // could do this in the ctor, but just showing that this is here
     void SetUp() override { account->deposit(100); }
@@ -32,11 +36,12 @@ struct AccountTest: testing::Test {
 
 // https://github.com/google/googletest/blob/master/googletest/docs/primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests
 // tl;dr use TEST_F if you're using a fixture. F for fixture. clever.
-TEST_F(AccountTest, CanDepositMoney) {
+TEST_F(AccountTest, ShouldDepositMoney) {
     account->deposit(100);
     EXPECT_EQ(200, account->getBalance());
 }
-TEST_F(AccountTest, CanWithdrawMoney) {
+
+TEST_F(AccountTest, ShouldWithdrawMoney) {
     account->withdraw(50);
     EXPECT_EQ(50, account->getBalance());
 }
