@@ -1,5 +1,5 @@
 
-# Main Project Documentation Page {#mainpage}
+# Main Project Documentation Page 
 
 A template for C++17 projects.
 
