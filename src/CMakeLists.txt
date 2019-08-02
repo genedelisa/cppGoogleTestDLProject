@@ -9,7 +9,6 @@ message("cmake GEND_INCLUDE_BUILD_DIR in ${GEND_INCLUDE_BUILD_DIR}")
 message("cmake CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}")
 set(Source
     Account.cpp
-   # ../include/Account.hpp
 )
 
 #####################################################################
@@ -29,7 +28,6 @@ target_compile_features(${TheLibraryName}
 target_include_directories(${TheLibraryName} 
     PUBLIC
         $<INSTALL_INTERFACE:include>
-        #$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${GEND_INCLUDE_BUILD_DIR}>
 
     PRIVATE
@@ -72,8 +70,8 @@ target_link_options(${TheLibraryName}
 )
 
 
-# how to debug properties and other things.
 include(CMakePrintHelpers)
+
 cmake_print_properties(
     TARGETS 
         ${TheLibraryName} 
