@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 project(cppGoogleTestDLProject
     VERSION 1.0.0
     LANGUAGES CXX
-    DESCRIPTION "CMake with autodownload googletest project for C++17."
-    HOMEPAGE_URL "https://github.com/genedelisa/somerepo"
+    DESCRIPTION "CMake with auto-downloaded googletest project for C++17."
+    HOMEPAGE_URL "https://github.com/genedelisa/cppGoogleTestDLProject"
 )
 
 message("top level cmake ${PROJECT_SOURCE_DIR}")
@@ -77,7 +77,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # each of these dirs have a CMakeLists.txt
 add_subdirectory(src)
 add_subdirectory(app)
-#include_directories(include)
 
 #####################################################################
 if(USE_UNIT_TESTING)
